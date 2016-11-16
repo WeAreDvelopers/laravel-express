@@ -14,13 +14,15 @@ class CreateCommentsTable extends Migration
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->increments('id');
+            
             /*RELACIONA COM O POST*/
             $table->integer('post_id')->unsigned();
             $table->foreign('post_id')->references('id')->on('posts');
             
-            $table->text('comment');
             $table->string('name');
             $table->string('email');
+            $table->text('comment');
+
             $table->timestamps();
         });
     }
@@ -30,8 +32,7 @@ class CreateCommentsTable extends Migration
      *
      * @return void
      */
-    public function down()
-    {
+    public function down(){
         Schema::drop('comments');
     }
 }

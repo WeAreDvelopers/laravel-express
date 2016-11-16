@@ -10,9 +10,23 @@
 |
 */
 ;
-Route::get('/','PostsController@index');
 
-Route::group(['prefix'=>'admin'],function(){
+Route::get('/auth/logout',function(){
+	Auth::logout();
+});
+
+Route::controllers([
+	'auth' => 'Auth\AuthController',
+	'password' => 'Auth\PasswordController'
+]);
+
+
+
+Route::get('/','PostsController@index');
+/*
+'middleware'=>'auth' verifica se o usuario estpa logado
+*/
+Route::group(['prefix'=>'admin','middleware'=>'auth'],function(){
 	Route::group(['prefix'=>'posts'],function(){
 		Route::get('',['as'=>'admin.posts.index','uses'=>'PostsAdminController@index']);
 		Route::get('create',['as'=>'admin.posts.create','uses'=>'PostsAdminController@create']);
@@ -23,4 +37,6 @@ Route::group(['prefix'=>'admin'],function(){
 	});
 	
 });
+
+
 

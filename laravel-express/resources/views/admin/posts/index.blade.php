@@ -14,10 +14,15 @@
  			</tr>
  		</thead>
  		<tbody>
+ 			
  			@foreach($posts as $post)
  			<tr>
  				<td>{{ $post->id }}</td>
- 				<td>{{ $post->title }}</td>
+ 				<td>{{ $post->title }}<br>
+					
+ 					
+					
+ 				</td>
  				<td><a href="{{route('admin.posts.edit',['id'=>$post->id])}}" class="btn btn-xs btn-primary"><span class="glyphicon glyphicon-pencil"></span></a>
  					<a href="{{route('admin.posts.destroy',['id'=>$post->id])}}" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-trash"></span></a></td>
  			</tr>

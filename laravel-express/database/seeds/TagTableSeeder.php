@@ -1,7 +1,7 @@
 <?php
-use App\Tag;
-use Illuminate\Database\Seeder;
 
+use Illuminate\Database\Seeder;
+use App\Tag;
 class TagTableSeeder extends Seeder
 {
     /**
@@ -13,6 +13,6 @@ class TagTableSeeder extends Seeder
     {
        Tag::truncate();
        // Tag::class chama App\Tag
-       factory(Tag::class,10)->create();
+       factory('App\Tag',10)->create();
     }
 }
